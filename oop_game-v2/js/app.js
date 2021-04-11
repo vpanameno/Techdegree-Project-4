@@ -2,19 +2,25 @@
  * Project 4 - OOP Game App
  * app.js */
 
-/** This was checking to see that the phrases were input **/
-// const game = new Game();
-// game.phrases.forEach((phrase, index) => {
-//   //includes the second parameter of index
-//   console.log(`Phrase ${index} - phrase: ${phrase.phrase}`);
-// });
+//Below we are creating giving the button to start the game interaction and
+//instantiating a new game object that we will refer to througought the game
 
-const logPhrase = phrase => {
-  console.log(`Phrase - phrase: `, phrase.phrase);
-};
-const game = new Game();
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
+let game = "";
+const playButton = document.querySelector("#btn__reset");
+playButton.addEventListener("click", e => {
+  game = new Game();
+  game.startGame();
+});
+
+/**
+ * Handles onscreen keyboard button clicks
+ * @param (HTMLButtonElement) button - The clicked button element
+ */
+const keyboard = document.querySelector("#qwerty");
+
+keyboard.addEventListener("click", e => {
+  if (event.target.className === "key") {
+    button = e.target;
+    game.handleInteraction(button);
+  }
+});
