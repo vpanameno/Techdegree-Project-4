@@ -23,17 +23,6 @@ class Game {
     ];
     return phrases;
   }
-  /**
-   * Selects random phrase from phrases property
-   * @return {Object} Phrase object chosen to be used
-   */
-  getRandomPhrase() {
-    //selects random phrases from phrases property
-    const randomPhrase = this.phrases[
-      Math.floor(Math.random() * this.phrases.length)
-    ];
-    return randomPhrase;
-  }
 
   /**
    * Begins game by selecting a random phrase and displaying it to user
@@ -46,6 +35,36 @@ class Game {
     selectedPhrase.addPhraseToDisplay(); //displays random phrase
     this.activePhrase = selectedPhrase;
   }
+
+  /**
+   * Selects random phrase from phrases property
+   * @return {Object} Phrase object chosen to be used
+   */
+  getRandomPhrase() {
+    //selects random phrases from phrases property
+    const randomPhrase = this.phrases[
+      Math.floor(Math.random() * this.phrases.length)
+    ];
+    return randomPhrase;
+  }
+
+  //Below we will disable the buttons and determine if they are correct or wrong
+  //and add appropriate class with colors orange or blue
+  handleInteraction() {
+    //button clicked
+    button.disabled = true;
+    if (!this.activePhrase.checkLetter(button.textContent)) {
+      button.classList.add("wrong");
+      this.removeLife();
+    } else {
+      this.activePhrase.showMatchedLetter(button.textContent);
+      button.classList.add("chosen");
+      if (this.checkForWin()) {
+        this.gameOver(true);
+      }
+    }
+  }
+
   /* Below I have created a function that will reset the game once the game has ended*/
   resetGame() {
     const div = document.getElementById("phrase");
@@ -115,29 +134,10 @@ if any of the letters have a 'hide' class then the player has not won
     //depending on outcome of gameWon//updates overlay h1 element with message
     if (gameWon === true) {
       overlay.setAttribute("class", "win");
-      console.log(overlay);
       message.textContent = "You win!";
     } else if (gameWon === false) {
-      console.log(overlay);
       message.textContent = "Better luck next time!";
       overlay.setAttribute("class", "lose");
-    }
-
-    //Below we will disable the buttons and determine if they are correct or wrong
-    //and add appropriate class with colors orange or blue
-  }
-  handleInteraction() {
-    //button clicked
-    button.disabled = true;
-    if (!this.activePhrase.checkLetter(button.textContent)) {
-      button.classList.add("wrong");
-      this.removeLife();
-    } else {
-      this.activePhrase.showMatchedLetter(button.textContent);
-      button.classList.add("chosen");
-      if (this.checkForWin()) {
-        this.gameOver(true);
-      }
     }
   }
 }
