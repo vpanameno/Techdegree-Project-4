@@ -1,4 +1,4 @@
-//Techdegree-Project-4: OOP Game Show App
+Techdegree-Project-4: OOP Game Show App
 
 In this project I used what I learned in previous courses about the DOM and event listeners
 along with new knowledge with objects including properties, methods, constructors, and even different
