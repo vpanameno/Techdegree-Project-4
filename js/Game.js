@@ -15,11 +15,11 @@ class Game {
    */
   createPhrases() {
     const phrases = [
-      new Phrase("I love feeling this way"),
-      new Phrase("Life is amazing"),
-      new Phrase("Karma comes around"),
-      new Phrase("Live life to the fullest"),
-      new Phrase("Never let fear win")
+      new Phrase("Failure is success in the process"),
+      new Phrase("The shortest answer is doing"),
+      new Phrase("Be scared and do it anyway"),
+      new Phrase("Healing starts with your mind"),
+      new Phrase("Be a better you for you")
     ];
     return phrases;
   }
